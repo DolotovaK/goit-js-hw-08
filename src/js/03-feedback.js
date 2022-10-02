@@ -7,16 +7,13 @@ const LOCAL_KEY = 'feedback-form-state';
 form.addEventListener('input', throttle(saveFormData, 500));
 form.addEventListener('submit', onSubmitClear);
 
-const formData = {};
+const inputData = {};
 fillFormData();
 
 function saveFormData(evt) {
-  const formData = {
-    email: emailInput.value,
-    message: messageInput.value,
-  };
-
-  localStorage.setItem(LOCAL_KEY, JSON.stringify(formData));
+  inputData[evt.target.name] = evt.target.value;
+  console.log(inputData);
+  localStorage.setItem(LOCAL_KEY, JSON.stringify(inputData));
 }
 
 function fillFormData() {
@@ -82,3 +79,8 @@ function onSubmitClear(evt) {
 // function onButtonClick(evt) {
 //   localStorage.clear();
 // }
+
+//   const formData = {
+//     email: emailInput.value,
+//     message: messageInput.value,
+//   };
