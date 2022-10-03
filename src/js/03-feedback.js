@@ -7,7 +7,9 @@ const LOCAL_KEY = 'feedback-form-state';
 form.addEventListener('input', throttle(saveFormData, 500));
 form.addEventListener('submit', onSubmitClear);
 
-const inputData = {};
+// console.log(form.elements);
+
+const inputData = { email: '', message: '' };
 fillFormData();
 
 function saveFormData(evt) {
@@ -36,6 +38,15 @@ function onSubmitClear(evt) {
   evt.currentTarget.reset();
   localStorage.removeItem(LOCAL_KEY);
 }
+
+//   if (!savedData.email && savedData.message) {
+//     emailInput.value = '';
+//     messageInput.value = savedData.message;
+//   }
+//   if (!savedData.message && savedData.email) {
+//     emailInput.value = savedData.email;
+//     messageInput.value = '';
+//   }
 
 // function saveFormData(evt) {
 //   console.log(evt.target.name);
